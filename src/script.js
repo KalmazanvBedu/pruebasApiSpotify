@@ -1,4 +1,4 @@
-const clientId = "4be659a3272041daa119e6d6cdc8dad0"; // Replace with your client id
+const clientId = "a69ecfeb10734805a9903629afc241b3"; // Replace with your client id
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
@@ -51,7 +51,7 @@ export async function redirectToAuthCodeFlow(clientId) {
 
     params.append("client_id", clientId);
     params.append("response_type", "code");
-    params.append("redirect_uri", "https://kalmazanvbedu.github.io/pruebasApiSpotify/");
+    params.append("redirect_uri", "http://localhost:5173/callback");
     params.append("scope", "user-read-private user-read-email");
     params.append("code_challenge_method", "S256");
     params.append("code_challenge", challenge);
@@ -87,7 +87,7 @@ export async function getAccessToken(clientId, code) {
     params.append("client_id", clientId);
     params.append("grant_type", "authorization_code");
     params.append("code", code);
-    params.append("redirect_uri", "https://kalmazanvbedu.github.io/pruebasApiSpotify/");
+    params.append("redirect_uri", "http://localhost:5173/callback");
     params.append("code_verifier", verifier);
 
     const result = await fetch("https://accounts.spotify.com/api/token", {
